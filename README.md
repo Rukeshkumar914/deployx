@@ -183,7 +183,7 @@ docker run --rm -p 8000:8000 rukesh91/deployx:1.0
 
 ## 👨‍💻 Author
 
-**Rukesh Yadav**
+**Rukesh Kumar**
 
 GitHub: [Rukeshkumar914](https://github.com/Rukeshkumar914)
 
