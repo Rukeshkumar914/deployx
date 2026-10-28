@@ -1,3 +1,4 @@
+
 from fastapi import FastAPI
 from datetime import datetime, timezone
 
@@ -13,6 +14,7 @@ def root():
     return {
         "message": "Welcome to DeployX",
         "health": "/health",
+        "readiness": "/ready",
         "docs": "/docs",
     }
 
@@ -23,4 +25,12 @@ def health_check():
         "status": "ok",
         "service": "deployx",
         "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@app.get("/ready")
+def readiness_check():
+    return {
+        "status": "ready",
+        "service": "deployx",
     }
