@@ -1,11 +1,12 @@
-
 from fastapi import FastAPI
 from datetime import datetime, timezone
+
+from app.config import SERVICE_NAME, APP_VERSION
 
 app = FastAPI(
     title="DeployX API",
     description="Health check API for automated deployment",
-    version="1.0.0",
+    version=APP_VERSION,
 )
 
 
@@ -13,6 +14,8 @@ app = FastAPI(
 def root():
     return {
         "message": "Welcome to DeployX",
+        "service": SERVICE_NAME,
+        "version": APP_VERSION,
         "health": "/health",
         "readiness": "/ready",
         "docs": "/docs",
@@ -23,7 +26,8 @@ def root():
 def health_check():
     return {
         "status": "ok",
-        "service": "deployx",
+        "service": SERVICE_NAME,
+        "version": APP_VERSION,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -32,5 +36,6 @@ def health_check():
 def readiness_check():
     return {
         "status": "ready",
-        "service": "deployx",
+        "service": SERVICE_NAME,
+        "version": APP_VERSION,
     }
